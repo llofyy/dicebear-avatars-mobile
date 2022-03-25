@@ -2,6 +2,7 @@ import 'package:dicebear_avatars/utils/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -61,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       DropdownButton(
+                        style: GoogleFonts.fredokaOne(color: Colors.black),
                         value: type,
                         onChanged: (value) {
                           setState(() {
@@ -79,14 +81,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: TextField(
                           decoration: const InputDecoration(
                               labelText: 'Your Custom Seed'),
-                          style: const TextStyle(),
+                          style: GoogleFonts.fredokaOne(),
                           onChanged: (value) {
                             setState(() {
                               seed = value.toString();
                             });
                           },
                         ),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            launch('$baseUrl/$type/$seed.png');
+                          },
+                          child: Text('Download Avatar',
+                              style: GoogleFonts.fredokaOne()))
                     ],
                   )
                 ],

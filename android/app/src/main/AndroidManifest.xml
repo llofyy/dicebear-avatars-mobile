@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dicebear_avatars">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="dicebear_avatars"
         android:name="${applicationName}"
